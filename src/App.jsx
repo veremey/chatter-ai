@@ -1,35 +1,55 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react"
+import { makeRequest } from "./api/makeRequest"
+import "./App.css"
 
 function App() {
-  const [count, setCount] = useState(0)
+	const [data, setData] = useState()
+	const [message, setMessage] = useState("")
+	const [chat, setChat] = useState([])
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+	const askChatGPT = async (e) => {
+		e.preventDefault()
+
+		setChat((state) => [
+			...state,
+			{
+				role: "Admin",
+				message,
+			},
+		])
+
+		setMessage("")
+		const response = await makeRequest(message)
+		setData(response)
+
+		setChat((state) => [
+			...state,
+			{
+				role: "chatGPT",
+				message: response.content,
+			},
+		])
+	}
+
+	return (
+		<div>
+			<div>
+				{chat.map((item, index) => (
+					<div key={index}>
+						<div>
+							<div>{item.role}</div>
+							<div>{item.message}</div>
+						</div>
+					</div>
+				))}
+				{JSON.stringify(data, null, 2)}
+			</div>
+			<form onSubmit={askChatGPT}>
+				<input type='text' value={message} onChange={(e) => setMessage(e.target.value)} />
+				<button type='submit'>Send</button>
+			</form>
+		</div>
+	)
 }
 
 export default App

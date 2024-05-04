@@ -25,4 +25,4 @@ app.post("/edpoint", async (req, res) => {
 
 // eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000
-app.listen(port, () => console.log(`server is RUNNIING at port - ${port}`))
+app.listen(port, () => console.log(`__Server__ is running at port - ${port}`))
