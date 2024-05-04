@@ -1,0 +1,168 @@
+@import "./assets/styles/reset.css";
+
+:root {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+
+	color-scheme: light dark;
+	color: #f0f0f0;
+	background-color: #242424;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat", sans-serif;
+
+	&::-webkit-scrollbar {
+		width: 4px;
+		height: 4px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: #3e3e3e;
+		border-radius: 5px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: linear-gradient(269.59deg, #01e0ed -12.09%, #0165a7 97.7%);
+		border-radius: 5px;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	margin-bottom: 0.8em;
+}
+
+button {
+	border: none;
+}
+
+ul,
+ol {
+	padding-left: 10px;
+	margin-bottom: 4px;
+
+	li {
+		margin-left: 10px;
+	}
+}
+
+ul {
+	li {
+		list-style-type: disc;
+	}
+}
+
+ol {
+	li {
+		list-style-type: decimal;
+	}
+}
+
+pre {
+	margin: 10px 0;
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		color: #213547;
+		background-color: #ffffff;
+	}
+	a:hover {
+		color: #747bff;
+	}
+	button {
+		background-color: #f9f9f9;
+	}
+}
+
+.chat {
+	display: flex;
+	flex-direction: column;
+	// min-height: 100vh;
+
+	width: 100%;
+	max-width: 1100px;
+	padding: 30px 20px;
+	margin: 0 auto;
+
+	&__messages {
+		height: calc(100vh - 114px);
+		overflow: hidden;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		padding: 5px 10px;
+		margin-bottom: 5px;
+
+		&--chatGPT {
+			background-color: #353535;
+
+			.message {
+				color: #f0f0f0;
+			}
+
+			// .message__title {
+			// 	text-align: right;
+			// }
+		}
+	}
+
+	&-form {
+		display: flex;
+		flex-direction: row;
+		margin-top: auto;
+		padding: 5px;
+
+		&__input {
+			width: 100%;
+			padding: 0 14px;
+			border: 1px solid #f2f2f2;
+			border-radius: 4px;
+		}
+
+		&__btn {
+			display: inline-block;
+			vertical-align: top;
+			padding: 10px 18px;
+			border-radius: 6px;
+			margin-left: 10px;
+			font-size: 16px;
+			transition: all 0.3s;
+			background-color: #f3f3f3;
+			color: #333;
+			// TODO: bg-color
+
+			&:hover {
+				background-color: #857373;
+				color: #f3f3f3;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.message {
+	margin-bottom: 10px;
+
+	&__title {
+		margin-bottom: 10px;
+	}
+}
