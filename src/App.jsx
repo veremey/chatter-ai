@@ -15,18 +15,14 @@ function App() {
 	const scrollToElement = () => testRef.current.scrollIntoView()
 
 	useEffect(() => {
-		if (scroll) {
-			scrollToElement()
-		}
-
-		console.log("scroll - ", scroll) // TODO: remove
-	}, [scroll])
+		scrollToElement()
+	}, [chat])
 
 	const askChatGPT = async (e) => {
 		e.preventDefault()
 
 		setLoading(true)
-		setScroll(true)
+		// setScroll(true)
 
 		setChat((state) => [
 			...state,
@@ -51,7 +47,7 @@ function App() {
 		])
 
 		setLoading(false)
-		setScroll(false)
+		// setScroll(false)
 	}
 
 	return (
