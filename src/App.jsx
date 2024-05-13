@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react"
 import Markdown from "react-markdown"
 import { makeRequest } from "./api/makeRequest"
 import { Loader } from "./assets/components/Loader/Loader"
+import { useThemeDetector } from "./assets/hooks/useThemeDetector"
 
 import "./App.scss"
 
@@ -13,6 +14,17 @@ function App() {
 
 	const anchorRef = useRef(null)
 	const scrollToElement = () => anchorRef.current.scrollIntoView()
+
+	const isDarkTheme = useThemeDetector()
+
+	useEffect(() => {
+		console.log(isDarkTheme, "  - useThemeDetector") // TODO: remove
+		if (isDarkTheme) {
+			document.body.className = "dark"
+		} else {
+			document.body.className = "light"
+		}
+	}, [])
 
 	useEffect(() => {
 		if (chat.length > 0) {

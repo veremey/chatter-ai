@@ -10,12 +10,15 @@
 
 	color-scheme: light dark;
 	color: #f0f0f0;
-	background-color: #242424;
+	// background-color: #242424;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	// --background-color: #242424;
+	// --text-color: #f0f0f0;
 }
 
 * {
@@ -78,17 +81,47 @@ pre {
 	margin: 10px 0;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
 	:root {
-		color: #213547;
-		background-color: #ffffff;
+		--background-color: #242424;
+		--background-answer-color: #353535;
+
+		--text-color: #f0f0f0;
+		--button-background-color: #092d23;
+		--button-hover-background-color: #857373;
+
+		color: var(--text-color);
+		background-color: var(--background-color);
 	}
+
 	a:hover {
 		color: #747bff;
 	}
+
 	button {
 		background-color: #f9f9f9;
 	}
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--background-color: #f0f0f0;
+		--background-answer-color: #dae6d6;
+		--text-color: #242424;
+		--text-hover-color: #c5e1cb;
+		--border-color: #333;
+		--button-background-color: #9ab7af;
+		--button-hover-background-color: #9ab7af;
+		--loader-color-1: #43a9c0;
+		--loader-color-2: #bfd30b;
+
+		color: var(--text-color);
+		background-color: var(--background-color);
+	}
+
+	// button {
+	// 	background-color: var(--button-background-color);
+	// }
 }
 
 .chat {
@@ -116,10 +149,10 @@ pre {
 		margin-bottom: 5px;
 
 		&--chatGPT {
-			background-color: #353535;
+			background-color: var(--background-answer-color);
 
 			.message {
-				color: #f0f0f0;
+				color: var(--text-color);
 			}
 		}
 	}
@@ -136,7 +169,7 @@ pre {
 		&__input {
 			width: 100%;
 			padding: 0 14px;
-			border: 1px solid #f2f2f2;
+			border: 1px solid var(--border-color);
 			border-radius: 4px;
 		}
 
@@ -148,12 +181,12 @@ pre {
 			margin-left: 10px;
 			font-size: 16px;
 			transition: all 0.3s;
-			background-color: #f3f3f3;
-			color: #333;
+			background-color: var(--button-background-color);
+			color: var(--text-color);
 
 			&:hover {
-				background-color: #857373;
-				color: #f3f3f3;
+				background-color: var(--button-hover-background-color);
+				color: var(--text-hover-color);
 				cursor: pointer;
 			}
 		}

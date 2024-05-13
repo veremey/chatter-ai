@@ -12,7 +12,7 @@
 		border-radius: 50%;
 		width: 22px;
 		height: 22px;
-		color: #fff;
+		color: var(--loader-color-1);
 
 		&::after,
 		&::before {
@@ -29,7 +29,7 @@
 		}
 
 		&::after {
-			color: #ff3d00;
+			color: var(--loader-color-2);
 			transform: rotateY(70deg);
 			animation-delay: 0.4s;
 		}
