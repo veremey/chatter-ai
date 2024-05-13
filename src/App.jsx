@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react"
-import { makeRequest } from "./api/makeRequest"
 import Markdown from "react-markdown"
+import { makeRequest } from "./api/makeRequest"
 
 import "./App.scss"
 
@@ -9,20 +9,20 @@ function App() {
 	const [message, setMessage] = useState("")
 	const [chat, setChat] = useState([])
 	const [loading, setLoading] = useState(false)
-	const [scroll, setScroll] = useState(false)
 
-	const testRef = useRef(null)
-	const scrollToElement = () => testRef.current.scrollIntoView()
+	const anchorRef = useRef(null)
+	const scrollToElement = () => anchorRef.current.scrollIntoView()
 
 	useEffect(() => {
-		scrollToElement()
+		if (chat.length > 0) {
+			scrollToElement()
+		}
 	}, [chat])
 
 	const askChatGPT = async (e) => {
 		e.preventDefault()
 
 		setLoading(true)
-		// setScroll(true)
 
 		setChat((state) => [
 			...state,
@@ -47,7 +47,6 @@ function App() {
 		])
 
 		setLoading(false)
-		// setScroll(false)
 	}
 
 	return (
@@ -56,7 +55,7 @@ function App() {
 				{chat.map((item, index) => (
 					<div
 						key={index}
-						ref={testRef}
+						ref={anchorRef}
 						className={`chat__item chat__item--${item.role}`}>
 						<div className={`message`}>
 							<h3 className='message__title'>{item.role}</h3>
