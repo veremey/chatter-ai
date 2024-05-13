@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import Markdown from "react-markdown"
 import { makeRequest } from "./api/makeRequest"
+import { Loader } from "./assets/components/Loader/Loader"
 
 import "./App.scss"
 
@@ -63,6 +64,7 @@ function App() {
 						</div>
 					</div>
 				))}
+				{loading && <Loader />}
 			</div>
 			<form className='chat-form' onSubmit={askChatGPT}>
 				<input
