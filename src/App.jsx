@@ -18,7 +18,6 @@ function App() {
 	const isDarkTheme = useThemeDetector()
 
 	useEffect(() => {
-		console.log(isDarkTheme, "  - useThemeDetector") // TODO: remove
 		if (isDarkTheme) {
 			document.body.className = "dark"
 		} else {
