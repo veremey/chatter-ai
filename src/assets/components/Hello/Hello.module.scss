@@ -1,0 +1,18 @@
+@import "../../styles/variables.css";
+
+.hello {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+
+	&__title {
+		color: var(--text-color);
+		margin-bottom: 0.8em;
+	}
+
+	&__description {
+		color: var(--text-color);
+	}
+}

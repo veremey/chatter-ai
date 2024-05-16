@@ -1,4 +1,5 @@
 @import "./assets/styles/reset.css";
+@import "./assets/styles/variables.css";
 
 :root {
 	display: flex;
@@ -19,30 +20,6 @@
 
 	--loader-color-1: #43a9c0;
 	--loader-color-2: #bfd30b;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background-color: #242424;
-		--background-answer-color: #393e41;
-		--text-color: #f0f0f0;
-		--text-hover-color: #393e41;
-		--border-color: #44bba4;
-		--button-background-color: #44bba4;
-		--button-hover-background-color: #e7bb41;
-	}
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		--background-color: #f0f0f0;
-		--background-answer-color: #dae6d6;
-		--text-color: #242424;
-		--text-hover-color: #393e41;
-		--border-color: #a3b18a;
-		--button-background-color: #9ab7af;
-		--button-hover-background-color: #fb8500;
-	}
 }
 
 * {
@@ -106,6 +83,7 @@ pre {
 }
 
 .chat {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 

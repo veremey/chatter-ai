@@ -5,6 +5,7 @@ import { Loader } from "./assets/components/Loader/Loader"
 import { useThemeDetector } from "./assets/hooks/useThemeDetector"
 
 import "./App.scss"
+import { Hello } from "./assets/components/Hello/Hello"
 
 function App() {
 	const [data, setData] = useState()
@@ -26,6 +27,7 @@ function App() {
 	}, [])
 
 	useEffect(() => {
+		console.log(chat, " - data") // TODO: remove
 		if (chat.length > 0) {
 			scrollToElement()
 		}
@@ -63,6 +65,7 @@ function App() {
 
 	return (
 		<div className='chat'>
+			{chat.length < 1 && <Hello />}
 			<div className='chat__messages'>
 				{chat.map((item, index) => (
 					<div
